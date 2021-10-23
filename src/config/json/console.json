@@ -1,13 +1,13 @@
 {
-    "errorspt": {
-        "errorcmdn": "esse comando não foi encontrado em nosso sistema! Caso não conheça nossos comandos digite --help",
-        "errorfatal": "um erro foi detectado, porfavor reinstale o software, caso não funcionar comunique um dos desenvolvedores. \nError:",
-        "errorcmdp": "Pasta commands não encontrada!",
-        "errorconfig": "Alguns arquivos de configurações está faltando!",
-        "errorportsnull": "é necessário ter uma port para fazer o scan! \nError:",
-        "errorportspnull": "Nenhuma porta foi encontrada em ports.json / portsp",
-        "errorportswnull": "Nenhuma porta foi encontrada em ports.json / portsw",
-        "errorservidornull": "você não digitou nenhum servidor. (Exemplo: node . --scanp 127.0.0.1)",
-        "erroropn": "você precisa colocar uma opção antes de iniciar o software. (Exemplo: node . --help)"
-    }
+  "errorspt": {
+    "errorcmdn": "esse comando não foi encontrado em nosso sistema! Caso não conheça nossos comandos digite --help",
+    "errorfatal": "um erro foi detectado, porfavor reinstale o software, caso não funcionar comunique um dos desenvolvedores. \nError:",
+    "errorcmdp": "Pasta commands não encontrada!",
+    "errorconfig": "Alguns arquivos de configurações está faltando!",
+    "errorportsnull": "é necessário ter uma port para fazer o scan! \nError:",
+    "errorportspnull": "Nenhuma porta foi encontrada em ports.json / portsp",
+    "errorportswnull": "Nenhuma porta foi encontrada em ports.json / portsw",
+    "errorservidornull": "você não digitou nenhum servidor. (Exemplo: node . --scanp 127.0.0.1)",
+    "erroropn": "você precisa colocar uma opção antes de iniciar o software. (Exemplo: node . --help)"
+  }
 }
