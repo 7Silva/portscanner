@@ -1,59 +1,55 @@
-const chalk = require('chalk');
-const { errorspt } = require('./src/config/json/console.json');
-const fs = require('fs');
-const { exit } = require('process');
-const args = process.argv;
-
-let user = process.env.USERNAME
-let op = args[2];
-let help = args[3];
-
-if (op == '--help' || op == '-help') {
-    let dirh = './src/config/txt/help.txt';
-    let help = fs.readFileSync(dirh, 'utf8')
-
-    console.clear()
-    console.log(help)
-}
-else {
+const
+  { errorspt } = require('./src/config/json/console.json'),
+  chalk = require('chalk'), fs = require('fs'),
+  args = process.argv;
+  
+let
+  user = process.env.USERNAME ?? 'Sem nome',
+  op = args[2],
+  help = args[3];
+  
+switch(op) {
+  case '--help': case '-help':
+    let
+      dirh = './src/config/txt/help.txt',
+      help = fs.readFileSync(dirh, 'utf8');
+    console.clear();
+    console.log(help);
+    break;
+    
+  default:
     if (!op) {
-        console.clear()
-        console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.erroropn} \n`)
-        exit()
+      console.clear();
+      console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.erroropn} \n`);
+      return process.exit();
     }
-    else {
-        let replacec = op.replace(/-/g, ``);
-        let formatoc = '.js';
-        let dircmd = './src/commands/';
-
-        fs.lstat(dircmd, (err) => {
-            if (err) {
-                console.clear()
-                console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorfatal} ${chalk.bold(`${errorspt.errorcmdp}`)}\n`)
-            }
-            else {
-                fs.access(`${dircmd}${replacec}${formatoc}`, fs.F_OK, (err) => {
-                    if (err) {
-                        console.clear()
-                        console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorcmdn} \n`)
-                    }
-                    else {
-                        console.clear()
-                        if (help == '--help') {
-                            let dirh = `./src/config/txt/help_${replacec}.txt`;
-                            let help = fs.readFileSync(dirh, 'utf8')
-
-                            console.clear()
-                            console.log(help)
-                            exit()
-                        }
-                        else {
-                            const func = require(`./src/commands/${replacec}`);
-                            func()
-                        }
-                    }
-                })
-            }
-        })
-    }
+    
+    let
+      replacec = op.replace(/-/g, ``),
+      formatoc = '.js',
+      dircmd = './src/commands/';
+      
+    return fs.lstat(dircmd, (err) => {
+      if (err) {
+        console.clear();
+        return console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorfatal} ${chalk.bold(`${errorspt.errorcmdp}`)}\n`);
+      }
+      
+      fs.access(`${dircmd}${replacec}${formatoc}`, fs.F_OK, (err) => {
+        if (err) {
+          console.clear();
+          return console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorcmdn} \n`);
+        }
+        
+        console.clear();
+        if (help == '--help') {
+          let
+            dirh = `./src/config/txt/help_${replacec}.txt`,
+            help = fs.readFileSync(dirh, 'utf8');
+          console.clear(); console.log(help);
+          process.exit();
+          } else return require(`./src/commands/${replacec}`)();
+      })
+    });
+    break;
 }
