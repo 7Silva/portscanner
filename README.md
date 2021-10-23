@@ -25,8 +25,8 @@ npm i node-port-scanner
 ```
 node . --help or -help
 
-node --scan https://google.com/
-node --scan -p 80 https://google.com/
-node --scanw https://google.com/
-node --scanp https://google.com/
+node . --scan https://google.com/
+node . --scan -p 80 https://google.com/
+node . --scanw https://google.com/
+node . --scanp https://google.com/
 ```
