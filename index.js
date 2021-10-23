@@ -12,9 +12,9 @@ switch(op) {
   case '--help': case '-help':
     let
       dirh = './src/config/txt/help.txt',
-      help = fs.readFileSync(dirh, 'utf8');
+      helpText = fs.readFileSync(dirh, 'utf8');
     console.clear();
-    console.log(help);
+    console.log(helpText);
     break;
     
   default:
@@ -35,7 +35,7 @@ switch(op) {
         return console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorfatal} ${chalk.bold(`${errorspt.errorcmdp}`)}\n`);
       }
       
-      fs.access(`${dircmd}${replacec}${formatoc}`, fs.F_OK, (err) => {
+      fs.access(dircmd + replacec + formatoc, fs.F_OK, (err) => {
         if (err) {
           console.clear();
           return console.log(`[${chalk.red('-')}] Olá ${user}, ${errorspt.errorcmdn} \n`);
@@ -45,10 +45,10 @@ switch(op) {
         if (help == '--help') {
           let
             dirh = `./src/config/txt/help_${replacec}.txt`,
-            help = fs.readFileSync(dirh, 'utf8');
-          console.clear(); console.log(help);
+            helpText = fs.readFileSync(dirh, 'utf8');
+          console.clear(); console.log(helpText);
           process.exit();
-          } else return require(`./src/commands/${replacec}`)();
+        } else return require(`./src/commands/${replacec}`)();
       })
     });
     break;
